@@ -1,0 +1,10 @@
+DEV:
+    script:
+        - echo $CI_PROJECT_DIR
+        - yarn
+        - yarn build:development
+        - rsync -hrvz --delete $CI_PROJECT_DIR/build/ ubuntu@172.31.16.128:/srv/resources-tool-frontend/build/
+    tags:
+        - DEV
+    only:
+        - develop
